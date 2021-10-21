@@ -2,7 +2,7 @@
 
 ## Files Here
 
-- [Introduction to NIEM Model Instances](https://github.com/NIEM/NIEM-Modeling-Formalism/blob/main/Introduction%20to%20NIEM%20Model%20Instances.md)
+- [Introduction to NIEM Model Instances](https://github.com/NIEM/NIEM-Metamodel/blob/main/Intro%20to%20NIEM%20Model%20Instances/Introduction%20to%20NIEM%20Model%20Instances.md)
 - [Metamodel Notes from 2020-08-25](https://github.com/NIEM/NIEM-Modeling-Formalism/blob/main/Metamodel%20Notes%20from%202020-08-25.md): Notes from the 2020 NTAC Annual Meeting regarding the metamodel
 
 ## Other Metamodel-Related Repos
