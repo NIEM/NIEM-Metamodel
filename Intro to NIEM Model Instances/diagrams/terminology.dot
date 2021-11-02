@@ -6,11 +6,11 @@ compound=true;
 
 	subgraph cluster0 {
 	
-		label="NIEM Model Instance (NMI)\n(XML)";
+		label="NIEM Common Model Format (CMF)\n(XML)";
 	
-		nmix[label="NIEM Model Instance in XML (NMIX)\n(XML Schema)", shape="box"];
-		nmij[label="NIEM Model Instance in JSON (NMIJ)\n(JSON Schema/JSON-LD)", shape="box"];
-		nmiw[label="NIEM Model Instance in Whatever\n(whatever technology)", shape="box"];
+		nmix[label="NIEM Model File in XML\n(XML Schema)", shape="box"];
+		nmij[label="NIEM Model File in JSON\n(JSON Schema/JSON-LD)", shape="box"];
+		nmiw[label="NIEM Model File in Whatever\n(whatever technology)", shape="box"];
 
 	}
 

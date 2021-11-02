@@ -1,4 +1,4 @@
-# Introduction to NIEM Model Instances
+# Introduction to NIEM Common Model Format
 
 ## Abstract
 
@@ -40,7 +40,7 @@ Currently, modeling concepts are embedded in a specific technology, XML Schema. 
 
 The solution is to create the modeling concepts in a conceptual format instead of embedding them in XML Schema. Instead of implying modeling concepts in XML Schema, we explicitly define them in a separate model, called a Model Instance.
 
-**This allows for _concept_-to-technology conversions, e.g. Model -> XML Schema and Model -> JSON. This is easier and more accurate than technology-to-technology conversions, e.g. XML Schema -> JSON.**
+**This allows for _concept_-to-technology conversions, e.g. Common Model Format -> XML Schema and Common Model Format -> JSON. This is easier and more accurate than technology-to-technology conversions, e.g. XML Schema -> JSON.**
 
 ## How It Works
 
@@ -79,7 +79,7 @@ Here's a snippet from NIEM, a subset of `nc:PersonEmploymentAssociation` and its
 </xs:element>
 ```
 
-Below is the matching snippet from a NIEM Model Instance subset. While it's longer, that's because it details the different objects in modeling terms like "object property" and "class." Note that it isn't XML _Schema_. It's not designed as a tool for validating exchanges. It's plain XML and only defines the Model Instance. To use it as a tool for validation, you convert this to the technology you'll be using. That representation could be XML Schema, JSON, RDF, UML<sup>[3](#uml_fn)</sup>, or whatever meets your requirements.
+Below is the matching snippet in NIEM Common Model Format. While it's longer, that's because it details the different objects in modeling terms like "object property" and "class." Note that it isn't XML _Schema_. It's not designed as a tool for validating exchanges. It's plain XML and only defines the Model. To use it as a tool for validation, you convert this to the technology you'll be using. That representation could be XML Schema, JSON, RDF, UML<sup>[3](#uml_fn)</sup>, or whatever meets your requirements.
 
 ```xml
 <ObjectProperty structures:id="nc.PersonEmploymentAssociation">
@@ -130,33 +130,33 @@ The framework itself is the "Metamodel." It's an abstraction of what makes up a 
 
 The Metamodel is a crucial tool for creating and maintaining models -- it is not typically something with which an ordinary NIEM user would be concerned.
 
-### Model Instance
+### Common Model Format
 
-Generically speaking, when you create a model from the Metamodel, you get a "model instance." This is a conceptual model reflecting the objects and relationships in a subject area. This does _not_ have to be NIEM. The Metamodel could be used to create a wide variety of different Model Instances. Of course, our main interest is in NIEM so we want to create a Model Instance reflecting NIEM.
+Generically speaking, when you create a model from the Metamodel, you get a model in "Common Model Format." This is a conceptual model reflecting the objects and relationships in a subject area. This does _not_ have to be NIEM. The Metamodel could be used to create a wide variety of different models in Common Model Format. Of course, our main interest is in NIEM so we want to create a Model Instance reflecting NIEM.
 
-### NIEM Model Instance
+### NIEM Common Model Format
 
-When you create a specific model, that name for that model instance is given a prefix determined by what specific model you've created. If you create NIEM as a model, that's a "NIEM Model Instance (NMI)." This is still a conceptual model. To use it for validating real-world exchanges, it is instantiated into some format.
+When you create a specific model, that name for that model instance is given a prefix determined by what specific model you've created. If you create NIEM as a model, that's a NIEM Model in Common Model Format. This is still a conceptual model. To use it for validating real-world exchanges, it is instantiated into some format.
 
-Up until this point, the Metamodel and Model Instances are mainly behind-the-scenes tools. **Community members eventually need platform agnostic versions of NIEM that can be used to define exchanges, that in turn can be implemented in many different technologies. The NIEM Model Instance is used to define an exchange, in terms of creating subsets and new content. It underlies the tooling. It is the platform _independent_, or agnostic, version of NIEM.**
+Up until this point, the Metamodel and Model are mainly behind-the-scenes tools. **Community members eventually need platform agnostic versions of NIEM that can be used to define exchanges, that in turn can be implemented in many different technologies. The NIEM Common Model Format is used to define an exchange, in terms of creating subsets and new content. It underlies the tooling. It is the platform _independent_, or agnostic, version of NIEM.**
 
 To actually implement an exchange, platform _dependent_ versions are needed.
 
-### NIEM Model Instance XML/JSON
+### Common Model Format in XML/JSON
 
-Transforming the NIEM Model Instance into a representation in a particular technology adds the technology as a suffix. If a NIEM Model Instance is converted to XML Schema, it becomes a "NIEM Model Instance in XML (NMIX)". If converted to JSON Schema, it's a "NIEM Model Instance in JSON (NMIJ)."
+Transforming NIEM Common Model Format into a representation in a particular technology produces model files in that technology. If NIEM Common Model Format is converted to XML Schema, it just a "NIEM Model file" in XML Schema. If converted to JSON Schema, it's a "NIEM Model file" in JSON.
 
-A NIEM Model Instance in XML (NMIX) is currently what is termed "NIEM." **The NIEM Model Instance abstracts NIEM up a level, in order to separate the modeling concepts from the specific technology of XML Schema.**
+A NIEM Model file in XML Schema is currently what is termed "NIEM." **NIEM Common Model Format abstracts NIEM up a level, in order to separate the modeling concepts from the specific technology of XML Schema.**
 
-XML and JSON aren't the only technologies for this conversion but are the starting points for the effort. The initial forms of NIEM Model Instances will be those two technologies.
+XML and JSON aren't the only technologies for this conversion but are the starting points for the effort. The initial forms of NIEM Common Model Format as model files will be those two technologies.
 
 ![Terminology](diagrams/terminology.png)
 
-While creating platform dependent versions of NIEM for validation purposes is a major outcome of the Metamodel and NIEM Model Instance, some instances may have entirely different purposes, often as a means of viewing a model.
+While creating platform dependent versions of NIEM for validation purposes is a major outcome of the Metamodel and NIEM Common Model Format, some instances may have entirely different purposes, often as a means of viewing a model.
 
 ## Benefits
 
-The major benefit is enabling the use of multiple model instance formats and views from one "source." The NIEM Model Instance can be transformed into any of these example formats, once appropriate transformations are written:
+The major benefit is enabling the use of multiple model instance formats and views from one "source." NIEM Common Model Format can be transformed into any of these example formats, once appropriate transformations are written:
 
 - XML Schema
 - JSON/JSON-LD<sup>[4](#json-ld_fn)</sup>
@@ -169,13 +169,13 @@ The major benefit is enabling the use of multiple model instance formats and vie
 	- Text (HTML<sup>[10](#html_fn)</sup>, Markdown<sup>[11](#markdown_fn)</sup>, DOCX<sup>[12](#docx_fn)</sup>, RTF<sup>[13](#rtf_fn)</sup>, PDF<sup>[14](#pdf_fn)</sup>, CSV<sup>[15](#csv_fn)</sup>, etc.)
 	- Diagrams (Graphviz/DOT<sup>[16](#dot_fn)</sup>)
 
-**Using a NIEM Model Instance, you no longer need separate tool suites for each format, e.g. SSGT and Movement. There is one tool suite that deals with models, with converters for different technologies. Converters are easier to write than tool suites. Development of those converters can be spread out over the community, leveraging expertise in each technology.**
+**Using NIEM Common Model Format, you no longer need separate tool suites for each format, e.g. SSGT and Movement. There is one tool suite that deals with models, with converters for different technologies. Converters are easier to write than tool suites. Development of those converters can be spread out over the community, leveraging expertise in each technology.**
 
 ## Why Not Just Use RFD/RDFS<sup>[17](#rdfs_fn)</sup>?
 
 NIEM models have details that aren't easily captured in RDF. Concepts like cardinality and field typing are crucial to information exchanges, yet are not easily represented in RDF.
 
-**A key benefit of the Metamodel is that the NIEM Model Instance can be readily converted to RDF.**
+**A key benefit of the Metamodel is that NIEM Common Model Format can be readily converted to RDF.**
 
 ## Why Not Just Use UML?
 
@@ -183,7 +183,7 @@ Prior efforts at defining NIEM in UML were complex and costly. While free and op
 
 Additionally, UML tools use XMI as a format for exchanging diagrams, but implementation of XMI across tools and versions isn't as stable and reliable as needed.
 
-**A key benefit of the Metamodel is that the NIEM Model Instance can be readily converted to UML/XMI.**
+**A key benefit of the Metamodel is that NIEM Common Model Format can be readily converted to UML/XMI.**
 
 ## Getting Started with the Metamodel
 
